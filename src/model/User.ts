@@ -3,7 +3,9 @@ export class User
     id: number = null
     name: string = null
     email: string = null
-    
+
+
+    // contructors
     constructor(data?: any)
     {
         if (data) {
