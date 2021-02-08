@@ -7,7 +7,7 @@ const ENV = Args.get("env")
 //console.log(`Environment is ${ENV}`)
 
 Config.init(ENV)
-
+console.log(Config.all())
 DB.init({ 
     host: Config.get("DB_HOST"),
     user: Config.get("DB_USER"),

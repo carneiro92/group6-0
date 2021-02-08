@@ -1,5 +1,5 @@
 const fullConfig = require("./config.json")
-
+const localConfig = require("./config.local.json")
 class ConfigService 
 {
     private config: any
@@ -7,6 +7,10 @@ class ConfigService
     init(env: string)
     {
         this.config = fullConfig[env]
+        
+        if (env === "local") {
+            this.config = { ...this.config, ...localConfig }
+        }
     }
 
     all()
