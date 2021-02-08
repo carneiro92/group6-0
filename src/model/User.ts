@@ -4,13 +4,13 @@ export class User
     name: string = null
     email: string = null
 
-
     // contructors
     constructor(data?: any)
     {
         if (data) {
-            this.hydrate(data)
+            this.hydrate(data) 
         }
+        
     }
 
     private hydrate(data: any)
