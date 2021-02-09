@@ -35,11 +35,11 @@ CREATE TABLE `users` (
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 
---INSERT INTO `users` (`id`, `name`, `email`, `age`)
---VALUES
---	(1,'Romain',NULL,NULL),
---	(2,'Ben','r@rien.com',NULL),
---	(3,'Edward','ed@gmail.com',26);
+INSERT INTO `users` (`id`, `name`, `email`, `age`)
+VALUES
+	(1,'Romain',NULL,NULL),
+	(2,'Ben','r@rien.com',NULL),
+	(3,'Edward','ed@gmail.com',26);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
