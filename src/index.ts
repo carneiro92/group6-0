@@ -1,26 +1,30 @@
-//import { Args } from "./config/args"
-require('dotenv').config()
-import { Config } from "./config/config.service"
-import { DB } from "./service/db.service"
+import * as dotenv from "dotenv"
+import * as express from "express"
+// read .env file before everything else
+dotenv.config()
+// import my services afterwards
+import { Config, DB } from "./service"
+import { UserRepository } from "./repository/user.repository"
 
-console.log(process.env)
+const app = express()
+//app.use(bodyParser.urlencoded({ extended: false }))
+//app.use(bodyParser.json())
 
-//Args.required("env", ["local", "test", "beta", "prod"])
-//const ENV = Args.get("env")
-////console.log(`Environment is ${ENV}`)
+app.get('/', (req: any, res: any) => {
+    res.send({ message: "Ok" })
+})
 
-//Config.init(ENV)
-//console.log(Config.all())
-//DB.init({ 
-//    host: Config.get("DB_HOST"),
-//    user: Config.get("DB_USER"),
-//    password: Config.get("DB_PASSWORD"),
-//    dbname: Config.get("DB_NAME"),
-//})
+app.get('/users', (req: any, res: any) => {
+    const limit = req.query.limit
+    UserRepository.getUsers(limit)
+        .then((users: any) => {
+            res.send(users)
+        }).catch(e => {
+            // logs?
+            res.status(500).send({ error: e.toString() })
+        })
+})
 
-//DB.query("SELECT * FROM users")
-//    .then(results => {
-//        console.log(results)
-//    }).catch(e => {
-//        console.log(e)
-//    })
+app.listen(process.env.PORT, () => {
+    console.log(`Example app listening on port ${process.env.PORT}`)
+})
