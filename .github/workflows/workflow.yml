@@ -17,7 +17,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: no
           MYSQL_DATABASE: simplon_groupx_test
           MYSQL_PASSWORD: test2
-          MYSQL_USER: root
+          MYSQL_USER: PhilipNorris
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=15s --health-timeout=7s --health-retries=4
